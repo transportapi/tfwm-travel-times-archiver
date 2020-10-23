@@ -1,0 +1,91 @@
+name:           tfwm-travel-times-archiver
+version:        0.1.0.0
+description:    TfWM Travel Times Archiver
+homepage:       https://github.com/transportapi/tfwm-travel-times-archiver#readme
+bug-reports:    https://github.com/transportapi/tfwm-travel-times-archiver/issues
+author:         TransportAPI
+copyright:      2020 TransportAPI
+license:        MIT
+license-file:   LICENSE
+build-type:     Simple
+cabal-version:  >= 1.10
+extra-source-files:
+    ChangeLog.md
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/transportapi/tfwm-travel-times-archiver
+
+library
+  exposed-modules:
+      API
+    , Archive
+    , Database.Query
+    , Data.MonoidMap
+    , Geodesy
+    , Numeric.Interpolate
+    , Utils
+  other-modules:
+      Paths_tfwm_travel_times_archiver
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , aeson
+    , bytestring
+    , cereal
+    , containers
+    , deepseq
+    , directory
+    , http-client
+    , http-media
+    , http-types
+    , leveldb-haskell
+    , microlens
+    , parallel
+    , servant-client
+    , servant-server
+    , sorted-list
+    , text
+    , time
+    , transformers
+    , unix
+    , wai
+    , wai-cors
+    , wai-websockets
+    , warp
+    , xeno
+    , websockets
+    , yaml
+    , zlib
+  default-language: Haskell2010
+
+executable tfwm-travel-times-archiver
+  main-is: Main.hs
+  other-modules:
+      Paths_tfwm_travel_times_archiver
+  hs-source-dirs:
+      app
+  ghc-options: -O2 -Wall -Wincomplete-uni-patterns -Wincomplete-record-updates -Wmissing-import-lists
+  build-depends:
+      base >=4.7 && <5
+    , tfwm-travel-times-archiver
+    , bytestring
+    , aeson
+    , leveldb-haskell
+    , optparse-generic
+  default-language: Haskell2010
+
+test-suite tfwm-travel-times-archiver-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_tfwm_travel_times_archiver
+  hs-source-dirs:
+      test
+  ghc-options: -O2 -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , tfwm-travel-times-archiver
+  default-language: Haskell2010

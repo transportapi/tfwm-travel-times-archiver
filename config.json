@@ -1,0 +1,9 @@
+{
+  "url": "http://nxwm.transportapi.com",
+  "source": "nxwm_siri_vm",
+  "app_id": "",
+  "app_key": "",
+  "services": [
+    [ "NXB", [ "23", "24" ] ]
+  ]
+}
